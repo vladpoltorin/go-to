@@ -2,16 +2,25 @@
   "name": "to-go-ext",
   "version": "1.0.0",
   "description": "Easy links to your favorite websites",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc && vite build",
+    "start": "vite"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/chrome": "^0.0.263",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
+    "@vitejs/plugin-react": "^4.2.1",
     "chrome-types": "^0.1.277",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "vite": "^5.2.8"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

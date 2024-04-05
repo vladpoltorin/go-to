@@ -4,9 +4,14 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "action": {
-    "default_popup": "./popup/popup.html"
+    "default_popup": "./popup.html"
   },
   "background": {
     "service_worker": "./dist/background.js"
-  }
+  },
+  "permissions": [
+    "webRequest",
+    "tabs"
+  ],
+  "host_permissions": ["<all_urls>"]
 }
