@@ -8,7 +8,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './src/main.tsx', // Your main React app entry point
+        popup: './src/popup/popup.tsx',
+        options: './src/options/options.tsx',
         background: './src/background.ts',
       },
       output: {

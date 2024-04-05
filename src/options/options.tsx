@@ -1,16 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-const App = () => {
-  return (
-    <div>
-      <h1>React app</h1>
-    </div>
-  );
-};
+import { App } from './App';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('options') as HTMLElement
 );
 
 root.render(

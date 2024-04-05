@@ -1,16 +1,35 @@
-async function getCurrentTab() {
-  let queryOptions = { active: true, lastFocusedWindow: true };
-  let [tab] = await chrome.tabs.query(queryOptions);
-  return tab;
-}
+let aliases: Record<string, string> = {};
 
-async function start() {
-  console.log("zxczczxczcx");
-  // let currentTabId = await getCurrentTab();
+chrome.storage.local.get().then((data) => {
+  Object.assign(aliases, data);
+});
 
-  // chrome.webRequest.onBeforeRequest.addListener((e) => {
-  //   return { cancel: true };
-  // }, { tabId: currentTabId.id ?? -1, urls: ["<all_urls>"] });
-};
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'local' && changes) {
+    for (const key in changes) {
+      aliases[key] = changes[key].newValue;
+    }
+  }
+});
 
-start();
+chrome.webNavigation.onErrorOccurred.addListener((details) => {
+  console.log('error', details);
+});
+
+chrome.webNavigation.onBeforeNavigate.addListener((details) => {
+  const slug = details.url.split('/to/')[1];
+
+  if (aliases[slug]) {
+    const urlToGo = aliases[slug];
+
+    chrome.tabs.update(details.tabId, { url: urlToGo });
+  }
+}, { url: [{ urlMatches: '' }] });
+
+chrome.runtime.onInstalled.addListener(({reason}) => {
+  if (reason === 'install') {
+    chrome.tabs.create({
+      url: "options.html"
+    });
+  }
+});
