@@ -1,0 +1,17 @@
+{
+  "name": "to-go-ext",
+  "version": "1.0.0",
+  "description": "Easy links to your favorite websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chrome-types": "^0.1.277",
+    "typescript": "^5.4.4"
+  }
+}
