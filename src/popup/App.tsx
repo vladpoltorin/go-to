@@ -17,6 +17,8 @@ export const App = () => {
       </label>
       <input id="input" value={input} onChange={(e) => setInput(e.target.value)} />
       <button onClick={onClick}>Create</button>
+
+      <a href="../../dist/options.html" target="_blank">Manage links</a>
     </div>
   );
 };

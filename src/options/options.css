@@ -1,3 +1,61 @@
+input {
+  height: 20px;
+  width: 300px;
+}
+
+code {
+  font-size: 12px;
+}
+
+.codespan {
+  background-color: rgba(222,222,222,0.3);
+  color: crimson;
+}
+
+.link_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link_list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
 .link_block {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgb(239, 239, 239);
+}
+
+.link_control-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.link_btn {
+  height: 30px;
+  width: 100px;
+}
+.link_btn:hover {
+  cursor: pointer;
+}
+.link_btn:disabled {
+  cursor: not-allowed;
+}
+
+.link_btn--edit {
+  background-color: lightblue;
+}
+.link_btn--delete {
+  background-color: lightcoral;
+}
+.link_btn--submit {
+  background-color: lightgreen;
 }
