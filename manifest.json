@@ -16,11 +16,8 @@
     "service_worker": "./dist/assets/background.js"
   },
   "permissions": [
-    "webRequest",
     "webNavigation",
     "tabs",
-    "storage",
-    "history"
-  ],
-  "host_permissions": ["<all_urls>"]
+    "storage"
+  ]
 }
