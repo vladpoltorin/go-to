@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && vite build",
+    "build:ext": "npm run build && web-ext build --as-needed",
     "start": "vite"
   },
   "keywords": [],
@@ -17,7 +18,8 @@
     "@vitejs/plugin-react": "^4.2.1",
     "chrome-types": "^0.1.277",
     "typescript": "^5.4.4",
-    "vite": "^5.2.8"
+    "vite": "^5.2.8",
+    "web-ext": "^7.11.0"
   },
   "dependencies": {
     "react": "^18.2.0",
