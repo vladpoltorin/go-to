@@ -1,24 +1,27 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-// import typescript from '@rollup/plugin-typescript';
+import { resolve } from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: './',
   build: {
     rollupOptions: {
       input: {
-        popup: './popup.html',
-        options: './options.html',
-        background: './src/background.ts',
+        main: resolve(__dirname, './options.html'),
+        background: resolve(__dirname, './src/background.ts'),
+        popup: resolve(__dirname, './popup.html'),
       },
       output: {
-        dir: 'dist/',
-        entryFileNames: '[name].js', // Specifies that the output files should be named after their entry names without hashes
-        // format: 'esm', // or 'esm' or 'cjs' depending on your target environment
-        // sourcemap: true,
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]',
       },
     },
   },
+  // server: {
+  //   mimeTypes: {
+  //     '*.ts': 'application/javascript',
+  //   },
+  // },
 });
