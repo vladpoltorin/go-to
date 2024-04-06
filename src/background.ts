@@ -29,7 +29,7 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
 chrome.runtime.onInstalled.addListener(({reason}) => {
   if (reason === 'install') {
     chrome.tabs.create({
-      url: "options.html"
+      url: "dist/options.html"
     });
   }
 });

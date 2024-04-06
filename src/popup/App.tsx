@@ -11,9 +11,12 @@ export const App = () => {
 
   return (
     <div style={{ width: 300, height: 300 }}>
-      <label htmlFor="input"></label>
+      <h3>Create a link for this page</h3>
+      <label htmlFor="input">
+        <p><code>to/{input}</code></p>
+      </label>
       <input id="input" value={input} onChange={(e) => setInput(e.target.value)} />
-      <button onClick={onClick}>Save this page as to/{input}</button>
+      <button onClick={onClick}>Create</button>
     </div>
   );
 };
