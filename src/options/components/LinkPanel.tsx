@@ -4,11 +4,12 @@ import { LinkForm } from './LinkForm';
 type Props = {
   cut: string;
   link: string;
+  slug: string;
   onUpdate: (prevShortcut: string, shortcut: string, link: string) => void;
   onDelete: (shortcut: string) => void;
 };
 
-export const LinkPanel = ({ cut, link, onUpdate, onDelete }: Props) => {
+export const LinkPanel = ({ cut, link, slug, onUpdate, onDelete }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleUpdate = (shortcut: string, address: string) => {
@@ -19,7 +20,7 @@ export const LinkPanel = ({ cut, link, onUpdate, onDelete }: Props) => {
   return (
     <section className="link_block">
       <div>
-        <h3>to/{cut}</h3>
+        <h3>{slug}/{cut}</h3>
         <code>{link}</code>
       </div>
       

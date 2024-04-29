@@ -1,19 +1,31 @@
+const DEFAULT_COMMAND = 'to';
+
 let aliases: Record<string, string> = {};
+let userCommand = DEFAULT_COMMAND;
 
 chrome.storage.local.get().then((data) => {
-  Object.assign(aliases, data);
+  // get aliases
+  aliases = data.aliases ?? {};
+
+  // get user slug
+  userCommand = data['__user__slug__'] ?? DEFAULT_COMMAND;
 });
 
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'local' && changes) {
-    for (const key in changes) {
-      aliases[key] = changes[key].newValue;
+    
+    if (changes['__user__slug__']) {
+      userCommand = changes['__user__slug__'].newValue;
+    }
+
+    if (changes.aliases) {
+      aliases = { ...changes.aliases.newValue };
     }
   }
 });
 
 chrome.webNavigation.onErrorOccurred.addListener((details) => {
-  console.log('error', details);
+  console.error('error', details);
 });
 
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
@@ -21,13 +33,13 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
     return;
   }
 
-  const slug = details.url.split('/to/')[1];
+  const slug = details.url.split(`/${userCommand}/`)[1];
 
   if (aliases[slug]) {
     const urlToGo = aliases[slug];
     chrome.tabs.update(details.tabId, { url: urlToGo });
   }
-}, { url: [{ urlMatches: 'http://to/*' }] });
+}, { url: [{ urlMatches: `http://\*` }] });
 
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   if (details.frameType !== 'outermost_frame') {
@@ -38,11 +50,11 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   const search = new URLSearchParams(url.search);
   const query = search.get('q');
 
-  if (!query || !query.includes('to/')) {
+  if (!query || !query.includes(`${userCommand}/`)) {
     return;
   }
 
-  const slug = query.split('to/')[1];
+  const slug = query.split(`${userCommand}/`)[1];
 
   if (aliases[slug]) {
     const urlToGo = aliases[slug];

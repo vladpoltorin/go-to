@@ -3,6 +3,10 @@ input {
   width: 300px;
 }
 
+input#slug {
+  width: 100px;
+}
+
 code {
   font-size: 12px;
 }
@@ -58,4 +62,15 @@ code {
 }
 .link_btn--submit {
   background-color: rgb(194, 246, 194);
+}
+
+.slug_controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text--imp {
+  font-weight: 500;
+  color: oklch(0.63 0.28 29.3);
 }

@@ -1,6 +1,6 @@
 {
   "name": "to-go-ext",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Easy links to your favorite websites",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
